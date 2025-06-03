@@ -34,7 +34,7 @@ class UserController extends Controller
         $validation = Validator::make($req->all(), [
             'full_name' => 'required|max:20|min:5',
             'email' => ['required','email','unique:users', 'lowercase'],
-            'password' => 'required|min:8|regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$^'
+            'password' => 'required|min:8|regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$^',
         ],[
             'password' => 'Password must contain letter, number and special character'
         ]);
@@ -51,7 +51,7 @@ class UserController extends Controller
         $save = User::create([
             'name' => $req->full_name,
             'email' => $req->email,
-            'password' => $req->password   //hash::make($req->password)
+            'password' => $req->password,   //hash::make($req->password)
         ]);
 
         if ($save) {
@@ -205,5 +205,10 @@ public function checklist($id){
 
 }
 
-    
+
+
+public function uploadpicture() {
+  
+}
+
 }

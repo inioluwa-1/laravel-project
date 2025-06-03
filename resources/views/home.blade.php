@@ -36,7 +36,6 @@
         {{-- @if ($errors->get('full_name'))
         <div class="text-danger text-sm">{{$errors->get('full_name')}}</div>   
          @endif --}}
-
         <div class="form-group mb-2">
             <label for="">Password</label>
             <input type="text" class="form-control" name="password">

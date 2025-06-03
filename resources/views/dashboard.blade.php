@@ -7,6 +7,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">profile picture</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Action</th>
@@ -14,6 +15,7 @@
             </thead>
             <tbody>
                     <tr>
+                        <td style="width: 50px; height: 50px; object-fit: cover;">{{$user->profile_picture}}</td>
                         <td>{{$user->name}} </td>
                         <td>{{$user->email}} </td>
                         <td>
@@ -24,7 +26,8 @@
                             </form>
                             <a href="/dashboard/{{ $user->id }}"> <i class="fa-solid fa-pen-to-square"></i>Update</a> <br>
                             <a href="/notes">Add Notes</a> <br>
-                            <a href="/checklist/{{ $user->id }}">check list</a>
+                            <a href="/checklist/{{ $user->id }}">check list</a> <br>
+                            <a href="/picture/{{ $user->id }}"><i class="fa-solid fa-user">Upload profile picture</a>
                         </td>
                     </tr>
             </tbody>

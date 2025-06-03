@@ -43,6 +43,10 @@ Route::post('/forgotpassword', [UserController::class, 'verifypass']);
 Route::get('/allusers', [UserController::class, 'allusers']);
 Route::get('/admin', [UserController::class, 'admin']);
 Route::get('/checklist/{id}', [UserController::class, 'checklist']);
+Route::get('/picture/{id}',  function ( $id) {
+    return view('profilepicture', compact('id'));
+});
+Route::post('/picture/{id}', [UserController::class, 'uploadpicture']);
 
 
 
