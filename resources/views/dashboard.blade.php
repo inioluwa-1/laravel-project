@@ -27,7 +27,8 @@
                             <a href="/dashboard/{{ $user->id }}"> <i class="fa-solid fa-pen-to-square"></i>Update</a> <br>
                             <a href="/notes">Add Notes</a> <br>
                             <a href="/checklist/{{ $user->id }}">check list</a> <br>
-                            <a href="/picture/{{ $user->id }}"><i class="fa-solid fa-user">Upload profile picture</a>
+                            <a href="/picture/{{ $user->id }}"><i class="fa-solid fa-user">Upload profile picture</a> <br>
+                            <a href="/products">e-commerce</a>
                         </td>
                     </tr>
             </tbody>

@@ -29,10 +29,11 @@ class UserController extends Controller
     ]);
     }
     public function createUser( Request $req ) {
+        // return json_encode($req->all()); 
         // return User::get(); in json format to get all users
         // return User::where('email', 'ifeini048@gmail.com')->first(); a particular user
         $validation = Validator::make($req->all(), [
-            'full_name' => 'required|max:20|min:5',
+            'fullname' => 'required|max:20|min:5',
             'email' => ['required','email','unique:users', 'lowercase'],
             'password' => 'required|min:8|regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$^',
         ],[
@@ -40,22 +41,34 @@ class UserController extends Controller
         ]);
 
         if ($validation->fails()) {
+            return json_encode([
+                'status' => true,
+                'errors' =>  $validation->errors()
+            ]);
             // return $validation->errors();
-            return view('home')->with('errors', $validation->errors());
-        };
-        $user = User::where('email', $req->email)->first();
-        if ($user) {
-            return view('home')->with('message', 'User already exists') ->with('status', false);
+            // return view('home')->with('errors', $validation->errors());
+        }
+              $user = User::where('email', $req->email)->first();
+            if ($user) {
+            return json_encode([
+                'status' => '401',
+                'message' => 'User already exists'
+            ]);
+            // return view('home')->with('message', 'User already exists') ->with('status', false);
         }
 
         $save = User::create([
-            'name' => $req->full_name,
+            'name' => $req->fullname,
             'email' => $req->email,
             'password' => $req->password,   //hash::make($req->password)
         ]);
 
         if ($save) {
-            return redirect('/login');
+            return json_encode([
+                'status' => '200',
+                'message' => 'User created successfully'
+            ]);
+            // return redirect('/login');
             // return view('home')->with('message', 'Details saved successfully.')->with('status', true);
         }
 
@@ -167,7 +180,7 @@ public function verifypass(Request $request) {
     if($request->passwordone!==$request->passwordtwo) {
         $errormsg='abeg password must be same';
         // session(['errormsg'=>$errormsg]);
-        return redirect()->route('verifypassword')->with('success', $errormsg);
+        // return redirect()->route('verifypassword')->with('success', $errormsg);
         // return redirect ()->back()->with    route('errormsg', $errormsg);
     }
      else 
@@ -210,5 +223,6 @@ public function checklist($id){
 public function uploadpicture() {
   
 }
+
 
 }

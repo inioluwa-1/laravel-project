@@ -15,7 +15,7 @@
             </textarea>
             <input type="file" name="image"> <br/>
             <input type="hidden" name="student_id" value={{ session('user')->id }}>
-                <button class="duration-300 border hover:cursor-pointer text-[#6F7FFE] font-bold py-2 px-3 bg-[#C8CCFC] rounded text-sm hover:bg-white hover:text-black">Add Note</button>
+            <button class="duration-300 border hover:cursor-pointer text-[#6F7FFE] font-bold py-2 px-3 bg-[#C8CCFC] rounded text-sm hover:bg-white hover:text-black">Add Note</button>
             </form>
             </div>
         </main>

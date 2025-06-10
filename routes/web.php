@@ -3,6 +3,7 @@
 // use GuzzleHttp\Psr7\Request;
 
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,8 @@ Route::get('/', function () {
         // ]);
         
         
-Route::get('/home', [UserController::class, 'index']);
-Route::post('/register', [UserController::class, 'createUser']);
+// Route::get('/home', [UserController::class, 'index']);
+// Route::post('/register', [UserController::class, 'createUser']);
 Route::get('/login', [UserController::class, 'loginUser']);
 Route::post('/login', [UserController::class, 'loginAccount']);
 Route::get('/dashboard', [UserController::class, 'Dashboard']);
@@ -57,3 +58,11 @@ Route::get('/editNote/{id}', [NoteController::class, 'editNote']);
 Route::post('/updateNote/{id}', [NoteController::class, 'updateNote']);
 Route::get('/deleteNote/{id}', [NoteController::class, 'deleteNote']);
 
+
+
+Route::get('/products', [ProductController::class, 'productsPage']);
+Route::post('/products/create', [ProductController::class, 'createProduct']);
+// Route::get('/products/edit/{id}', [ProductController::class, 'editProduct']);
+// Route::post('/products/update/{id}', [ProductController::class, 'updateProduct']);
+Route::get('/products/delete/{id}', [ProductController::class, 'deleteProduct']);
+Route::get('/all-products', [ProductController::class, 'allProducts']);

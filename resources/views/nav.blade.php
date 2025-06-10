@@ -36,7 +36,9 @@
               </li>
               <li class="nav-item">
                <a href="/admin" class="nav-link">Notes</a>
-
+              </li>
+              <li class="nav-item mx-5">
+                <a class="nav-link active" aria-current="page" href="/all-products">All Product</a>
               </li>
             </ul>
             @yield('search-bar')
